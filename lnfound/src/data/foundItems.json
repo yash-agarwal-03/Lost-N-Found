@@ -1,0 +1,12 @@
+[
+    {
+      "id": 1,
+      "description": "White iPhone 13",
+      "location": "Library"
+    },
+    {
+      "id": 2,
+      "description": "Black wallet",
+      "location": "Cafeteria"
+    }
+  ]
