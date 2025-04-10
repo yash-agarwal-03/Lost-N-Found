@@ -4,23 +4,22 @@ import fs from "fs";
 
 const app = express();
 const PORT = 5000;
+app.use(express.json());
 
 
 const FILE_PATH_LOST="./data/lostItems.json";
-let lostTickets=fs.readFileSync(FILE_PATH_LOST, "utf-8");
-lostTickets=JSON.parse(lostTickets);
+let lostTickets=JSON.parse(fs.readFileSync(FILE_PATH_LOST, "utf-8"));
 
 const FILE_PATH_FOUND="./data/foundItems.json";
-let foundItems=fs.readFileSync(FILE_PATH_FOUND, "utf-8");
-app.use(express.json());
+let foundItems=JSON.parse(fs.readFileSync(FILE_PATH_FOUND, "utf-8"));
 
 app.get("/",(req,res)=>{
     const data={
         lostTickets: JSON.parse(lostTickets),
         foundItems: JSON.parse(foundItems)
     };
-    res.json(data);
-    // res.send(lostTickets);
+    // res.json(data);
+    res.send(data);
 });
 app.post('/addLostTicket', (req, res) => {
     console.log(req.body);
