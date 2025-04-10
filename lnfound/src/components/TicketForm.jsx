@@ -11,7 +11,7 @@ const TicketForm = ({ onAddTicket }) => {
 
   return (
     <div className="card">
-      <h2>Raise a Lost Item Ticket</h2>
+      <h2>File your complaint</h2>
       <div>
         <label htmlFor="description">Description</label>
         <textarea

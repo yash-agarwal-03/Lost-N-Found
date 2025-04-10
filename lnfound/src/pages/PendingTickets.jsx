@@ -62,10 +62,28 @@
 
 // export default PendingTickets;
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import LostItemslist from '../components/LostItemsList.jsx';
 
 const PendingTickets = () => {
-  return <LostItemslist/>;
+  const [tickets, setTickets] = useState([]);
+  useEffect(() => {
+    const fetchTickets = async () => {
+      try {
+        const res = await fetch("http://localhost:5000/lnf/getLostTickets");
+        const data = await res.json();
+        console.log("Fetched tickets:", data);
+        setTickets(data);
+      } catch (err) {
+        console.error("Fetch error:", err);
+      }
+    }
+    fetchTickets();
+  },[]);
+
+  return <section>
+    <h2>Pending Requests</h2>
+    <LostItemslist lostItems={tickets.filter(ticket=> ticket.status === "pending")}/>;
+    </section>
 }
 export default PendingTickets;
