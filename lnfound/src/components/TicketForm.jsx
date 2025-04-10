@@ -2,13 +2,7 @@ import React, { useState } from 'react';
 
 const TicketForm = ({ onAddTicket }) => {
   const [newTicket, setNewTicket] = useState({ description: '', location: '' });
-
-  // const handleAddTicket = () => {
-  //   if (newTicket.description && newTicket.location) {
-  //     onAddTicket(newTicket);
-  //     setNewTicket({ description: '', location: '' });
-  //   }
-  // };
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     onAddTicket(newTicket);

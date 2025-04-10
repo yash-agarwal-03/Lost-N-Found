@@ -1,23 +1,18 @@
-import React, { useState, useEffect } from 'react';
 import TicketForm from '../components/TicketForm';
-import Card from '../components/Card';
-import foundItemsData from '../data/foundItems.json';
-import LinkButton from '../components/linkButton';
 import AdminControl from '../components/AdminControl';
+import FoundItemsList from '../components/FoundItemsList';
 const Home = () => {
-  const [foundItems, setFoundItems] = useState(() => {
-    const storedFoundItems = localStorage.getItem('foundItems');
-    return storedFoundItems ? JSON.parse(storedFoundItems) : foundItemsData;
-  });
-  
-  useEffect(() => {
-    // Save found items to local storage
-    localStorage.setItem('foundItems', JSON.stringify(foundItems));
-  }, [foundItems]);
-
+ 
   const handleAddTicket = (ticket) => {
     const newTicket = { id: Date.now(), ...ticket, status: 'pending' };
-    setFoundItems([...foundItems, newTicket]);
+    const response=fetch("http://localhost:5000/addLostTicket", {
+      method:"POST",
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body: JSON.stringify(newTicket)
+    }
+    )
   };
 
   return (
@@ -31,18 +26,7 @@ const Home = () => {
         <h2>Raise a Lost Item Ticket</h2>
         <TicketForm onAddTicket={handleAddTicket} />
       </section>
-      <section>
-        <h2>Found Items Inventory</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {foundItems.map(item => (
-            <Card key={item.id} className="p-4 bg-white rounded-lg shadow-md">
-              <h3 className="text-xl font-bold mb-2">Item #{item.id}</h3>
-              <p className="text-gray-700 mb-2">Description: {item.description}</p>
-              <p className="text-gray-700">Location: {item.location}</p>
-            </Card>
-          ))}
-        </div>
-      </section>
+      <FoundItemsList/>
       
     </div>
   );
