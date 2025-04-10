@@ -4,8 +4,8 @@ import FoundItemsList from '../components/FoundItemsList';
 const Home = () => {
  
   const handleAddTicket = (ticket) => {
-    const newTicket = { id: Date.now(), ...ticket, status: 'pending' };
-    const response=fetch("http://localhost:5000/addLostTicket", {
+    const newTicket = { _id: Date.now(), ...ticket };
+    const response=fetch("http://localhost:5000/lnf/addLostTicket", {
       method:"POST",
       headers:{
         'Content-Type':'application/json'
