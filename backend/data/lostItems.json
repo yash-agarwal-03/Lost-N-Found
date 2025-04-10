@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "description": "Black laptop bag",
+    "location": "Library",
+    "status": "pending"
+  },
+  {
+    "id": 2,
+    "description": "Red umbrella",
+    "location": "Cafeteria",
+    "status": "approved"
+  },
+  {
+    "id": 3,
+    "description": "Blue backpack",
+    "location": "Gym",
+    "status": "declined"
+  },
+  {
+    "id": 1,
+    "description": "yellow bag",
+    "location": "Library",
+    "status": "pending"
+  },
+  {
+    "id": 69,
+    "description": "hp bag",
+    "location": "csed",
+    "status": "pending"
+  },
+  {
+    "id": 69,
+    "description": "hp bag",
+    "location": "csed",
+    "status": "pending"
+  }
+]
