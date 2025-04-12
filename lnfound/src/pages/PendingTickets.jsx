@@ -64,13 +64,13 @@
 
 import React, { useState, useEffect } from "react";
 import LostItemslist from '../components/LostItemsList.jsx';
-
+import LinkButton from "../components/linkButton.jsx";
 const PendingTickets = () => {
   const [tickets, setTickets] = useState([]);
   useEffect(() => {
     const fetchTickets = async () => {
       try {
-        const res = await fetch("http://localhost:5000/lnf/getLostTickets");
+        const res = await fetch("http://localhost:5000/lnf/getPendingTickets");
         const data = await res.json();
         console.log("Fetched tickets:", data);
         setTickets(data);
@@ -80,10 +80,24 @@ const PendingTickets = () => {
     }
     fetchTickets();
   },[]);
-
+  const updateTicketStatus = (id, newStatus) => {
+    setTickets(prev =>
+      prev.map(ticket =>
+        ticket._id === id ? { ...ticket, status: newStatus } : ticket
+      )
+    );
+  };
   return <section>
     <h2>Pending Requests</h2>
-    <LostItemslist lostItems={tickets.filter(ticket=> ticket.status === "pending")}/>;
+    <section>
+             <div className="flex justify-center mt-4">
+
+             <LinkButton linkto="/" value="Home Page"/>
+             <LinkButton linkto="/lost-items-requests" value="View Lost Items Tickets"/>
+           
+             </div>
+         </section>
+    <LostItemslist lostItems={tickets.filter(ticket=>ticket.status==='pending')} onUpdate={updateTicketStatus}/>
     </section>
 }
 export default PendingTickets;

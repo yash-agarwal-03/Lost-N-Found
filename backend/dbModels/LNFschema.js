@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { type } from "os";
 
 const lostSchema = new mongoose.Schema({
     _id: {
@@ -15,7 +14,7 @@ const lostSchema = new mongoose.Schema({
         enum: ['pending', 'approved','rejected','resolved'],
         default: 'pending'
     }
-});
+},{versionKey:false});
 const LostTicket=mongoose.model('LostTicket', lostSchema);
 
 const foundSchema=new mongoose.Schema({
@@ -26,7 +25,7 @@ const foundSchema=new mongoose.Schema({
     description: String,
 
     location: String
-})
+},{versionKey:false});
 const FoundItem=mongoose.model('FoundItem', foundSchema);
 
 export {FoundItem, LostTicket};

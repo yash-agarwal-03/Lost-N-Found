@@ -1,6 +1,7 @@
 import TicketForm from '../components/TicketForm';
 import AdminControl from '../components/AdminControl';
 import FoundItemsList from '../components/FoundItemsList';
+import LinkButton from '../components/linkButton';
 const Home = () => {
  
   const handleAddTicket = (ticket) => {
@@ -21,11 +22,12 @@ const Home = () => {
         <h2>Lost & Found System</h2>
         <p>Report lost items and view found items.</p>
       </section>
-      <AdminControl />
       <section>
         <h2>Raise a Lost Item Ticket</h2>
         <TicketForm onAddTicket={handleAddTicket} />
       </section>
+      <AdminControl />
+      <LinkButton linkto="/lost-items-requests" value="View Lost Items Tickets"/>
       <FoundItemsList/>
       
     </div>
