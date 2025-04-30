@@ -1,10 +1,11 @@
 import express from "express";
 import { FoundItem, LostTicket } from "../dbModels/LNFschema.js";
 import UpdateRouter from "./UpdateTicket.js";
+import DeleteRouter from "./DeleteRouter.js";
 const LNFrouter = express.Router();
 
-LNFrouter.use('/updateTicket',UpdateRouter);
-
+LNFrouter.use('/update',UpdateRouter);
+LNFrouter.use('/delete',DeleteRouter);
 
 LNFrouter.post("/addLostTicket", async (req, res) => {
   console.log(req.body);

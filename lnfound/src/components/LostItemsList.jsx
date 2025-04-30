@@ -3,7 +3,7 @@ import Card from "../components/Card";
 import { useState } from "react";
 import ConfirmActionDialog from "./ConfirmActionDialog";
 
-const LostItemsList = ({lostItems, onUpdate}) => {
+const LostItemsList = ({lostItems, onUpdate}  ) => {
   const [isConfirmDialogOpen, setConfirmDialogBoxOpen] = useState(false);
   const [confirmAction, setConfirmAction] = useState(null);
   const [confirmTicketId, setConfirmTicketId] = useState(null);
@@ -13,7 +13,7 @@ const LostItemsList = ({lostItems, onUpdate}) => {
     const newStatus = confirmAction === "approve" ? "approved" : "rejected";
 
     try {
-      const res = await fetch(`http://localhost:5000/lnf/updateTicket/${id}`, {
+      const res = await fetch(`http://localhost:5000/lnf/update/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

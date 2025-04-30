@@ -8,7 +8,7 @@ const LostItemsRequests = () => {
   useEffect(() => {
     const fetchTickets = async () => {
       try {
-        const res = await fetch("http://localhost:5000/lnf/getApprovedTickets");
+        const res = await fetch("http://localhost:5000/lnf/getApprovedTickets"); //send all these to api folder
         console.log("res:", res);
         const data = await res.json();
         console.log("Fetched tickets:", data);
