@@ -16,6 +16,7 @@ const Home = () => {
         body: JSON.stringify(newTicket)
       }
       )
+      console.log(response);
       alert(response.statusText==="OK"?`Ticket added successfully\nTicket ID : ${id}`:"Unsuccessful in adding ticket");
 
     }

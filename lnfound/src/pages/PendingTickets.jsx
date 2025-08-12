@@ -80,6 +80,7 @@ const PendingTickets = () => {
     }
     fetchTickets();
   },[]);
+  
   const updateTicketStatus = (id, newStatus) => {
     setTickets(prev =>
       prev.map(ticket =>

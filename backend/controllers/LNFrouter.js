@@ -1,10 +1,10 @@
 import express from "express";
 import { FoundItem, LostTicket } from "../dbModels/LNFschema.js";
-import UpdateRouter from "./UpdateTicket.js";
+import ApproveRouter from "./ApproveRouter.js";
 import DeleteRouter from "./DeleteRouter.js";
 const LNFrouter = express.Router();
 
-LNFrouter.use('/update',UpdateRouter);
+LNFrouter.use('/approve',ApproveRouter);
 LNFrouter.use('/delete',DeleteRouter);
 
 LNFrouter.post("/addLostTicket", async (req, res) => {
@@ -12,8 +12,9 @@ LNFrouter.post("/addLostTicket", async (req, res) => {
 
   try {
     const newTicket = new LostTicket(req.body);
+    console.log(newTicket)
     await newTicket.save();
-    res.send(201).send("Ticket added to database");
+    return res.status(200).send("Ticket added to database");
   } catch (err) {
     console.error("Error adding ticket to database", err);
     res.send("Error in saving ticket to database");
@@ -22,8 +23,8 @@ LNFrouter.post("/addLostTicket", async (req, res) => {
 });
 
 LNFrouter.post("/addFoundItem", async (req, res) => {
-  let item = req.body; // Generate a unique ID for the new item
-  item._id = Date.now();
+  let item = req.body; 
+  item._id = Date.now();  // Generate a unique ID for the new item
   try {
     const newFoundItem = new FoundItem(item);
     await newFoundItem.save();

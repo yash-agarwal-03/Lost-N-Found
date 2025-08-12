@@ -8,7 +8,7 @@ const ConfirmActionDialog = ({ isOpen, onClose,action, onConfirm }) => {
         <p>Are you sure you want to {action} this ticket?</p>
         <div>
           <button className="cancel" onClick={onClose}>Cancel</button>
-          <button onClick={onConfirm}>{action === 'approve' ? 'Approve' : 'Reject'}</button>
+          <button onClick={onConfirm}>{action === 'approve' ? 'Approve' : 'Delete'}</button>
         </div>
       </div>
     </div>

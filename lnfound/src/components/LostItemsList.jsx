@@ -2,18 +2,27 @@ import React from "react";
 import Card from "../components/Card";
 import { useState } from "react";
 import ConfirmActionDialog from "./ConfirmActionDialog";
-
-const LostItemsList = ({lostItems, onUpdate}  ) => {
+import { deleteLostTicket } from "../api/Api";
+const LostItemsList = ({ lostItems, onUpdate }) => {
   const [isConfirmDialogOpen, setConfirmDialogBoxOpen] = useState(false);
   const [confirmAction, setConfirmAction] = useState(null);
   const [confirmTicketId, setConfirmTicketId] = useState(null);
 
   const updateTicket = async () => {
+    if (confirmAction === "approve") approveTicket();
+    else deleteLostTicket(confirmTicketId);
+
+    setConfirmDialogBoxOpen(false);
+    setConfirmAction(null);
+    setConfirmTicketId(null);
+  };
+
+  const approveTicket = async () => {
     const id = confirmTicketId;
-    const newStatus = confirmAction === "approve" ? "approved" : "rejected";
+    const newStatus = "approved";
 
     try {
-      const res = await fetch(`http://localhost:5000/lnf/update/${id}`, {
+      const res = await fetch(`http://localhost:5000/lnf/approve/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -26,9 +35,8 @@ const LostItemsList = ({lostItems, onUpdate}  ) => {
     } catch (err) {
       console.error(`Error in ${confirmAction}ing:`, err);
     }
-    setConfirmDialogBoxOpen(false);
-    setConfirmAction(null);
-    setConfirmTicketId(null);
+
+    
   };
 
   const handleConfirmAction = async (action, id) => {
@@ -59,8 +67,8 @@ const LostItemsList = ({lostItems, onUpdate}  ) => {
                 >
                   Approve
                 </button>
-                <button onClick={() => handleConfirmAction("reject", item._id)}>
-                  Reject
+                <button onClick={() => handleConfirmAction("delete", item._id)}>
+                  Delete
                 </button>
               </>
             )}

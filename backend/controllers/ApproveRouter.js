@@ -1,9 +1,9 @@
 import express from "express";
 import {LostTicket} from "../dbModels/LNFschema.js";
 
-const UpdateRouter = express.Router();
+const ApproveRouter = express.Router();
 
-UpdateRouter.put("/:id", async (req, res) => {
+ApproveRouter.put("/:id", async (req, res) => {
     const id=req.params.id;
     const {status} = req.body;
     console.log("Updating ticket with ID:", id, "to status:", status);
@@ -16,4 +16,4 @@ UpdateRouter.put("/:id", async (req, res) => {
         res.status(500).send(`Error updating ticket${err}`);
     }
 });
-export default UpdateRouter;
+export default ApproveRouter;
