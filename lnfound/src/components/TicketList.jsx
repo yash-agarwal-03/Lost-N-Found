@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import EditTicketDialog from './EditTicketDialog';
 import ConfirmActionDialog from './ConfirmActionDialog';
 
+import '../styles/lists.css';
+
 const TicketList = ({ tickets, onEditTicket, onApproveTicket, onDeclineTicket }) => {
   const [editingTicketId, setEditingTicketId] = useState(null);
   const [editingTicket, setEditingTicket] = useState({ description: '', location: '' });
@@ -48,22 +50,26 @@ const TicketList = ({ tickets, onEditTicket, onApproveTicket, onDeclineTicket })
 
   return (
     <>
-      <div>
+      <div className="lnf-list-container">
         {tickets.map(ticket => (
-          <div key={ticket.id} className="card">
-            <h3>Ticket #{ticket.id}</h3>
-            <p>Status: {ticket.status}</p>
-            <p>Description: {ticket.description}</p>
-            <p>Location: {ticket.location}</p>
+          <div key={ticket.id} className="lnf-list-card">
+            <div className="lnf-list-title">Ticket #{ticket.id}</div>
+            <div className={`lnf-list-status ${ticket.status}`}>{ticket.status}</div>
             <div>
-              {ticket.status === 'pending' && (
-                <>
-                  <button onClick={() => handleEditTicket(ticket.id)}>Edit</button>
-                  <button onClick={() => handleConfirmAction('approve', ticket.id)}>Approve</button>
-                  <button onClick={() => handleConfirmAction('decline', ticket.id)}>Decline</button>
-                </>
-              )}
+              <div className="lnf-list-label">Description</div>
+              <div className="lnf-list-value">{ticket.description}</div>
             </div>
+            <div>
+              <div className="lnf-list-label">Location</div>
+              <div className="lnf-list-value">{ticket.location}</div>
+            </div>
+            {ticket.status === 'pending' && (
+              <div className="lnf-list-actions">
+                <button className="lnf-list-button edit" onClick={() => handleEditTicket(ticket.id)}>Edit</button>
+                <button className="lnf-list-button approve" onClick={() => handleConfirmAction('approve', ticket.id)}>Approve</button>
+                <button className="lnf-list-button delete" onClick={() => handleConfirmAction('decline', ticket.id)}>Decline</button>
+              </div>
+            )}
           </div>
         ))}
       </div>

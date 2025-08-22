@@ -15,18 +15,20 @@ const FoundItemsList = () => {
     });
 
     return (
-        <section>
-        <h2>Found Items Inventory</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {foundItems.map(item => (
-            <Card className="p-4 bg-white rounded-lg shadow-md">
-              <h3 className="text-xl font-bold mb-2">Item #{item._id}</h3>
-              <p className="text-gray-700 mb-2">Description: {item.description}</p>
-              <p className="text-gray-700">Location: {item.location}</p>
-            </Card>
-          ))}
-        </div>
-      </section>
+      <>
+        <div className="lnf-inventory-heading">HERE'S WHAT WE FOUND</div>
+          <div className="lnf-inventory-grid">
+            {foundItems.map((item) => (
+              <div className="lnf-inventory-card" key={item._id}>
+                <div className="lnf-inventory-card-id">ITEM ID : #{item._id}</div>
+                <div className="lnf-inventory-card-label">ITEM DESCRIPTION</div>
+                <div className="lnf-inventory-card-value">{item.description}</div>
+                <div className="lnf-inventory-card-label">ITEM LOCATION</div>
+                <div className="lnf-inventory-card-value">{item.location}</div>
+              </div>
+            ))}
+          </div>
+      </>
     );
 
 };

@@ -39,25 +39,27 @@ const UploadFoundItem = () => {
             
             </div>
         </section>
-        <div className="card">
-          <h3>Add a Found Item</h3>
+        <div className="lnf-form-section">
+          <h3 className="lnf-inventory-heading">Add a Found Item</h3>
           <div>
-            <label htmlFor="description">Description</label>
+            <label htmlFor="description" className="lnf-form-label">Description :</label>
             <textarea
               id="description"
+              className="lnf-form-input"
               value={newFoundItem.description}
               onChange={(e) => setNewFoundItem({ ...newFoundItem, description: e.target.value })}
             />
           </div>
           <div>
-            <label htmlFor="location">Location</label>
+            <label htmlFor="location" className="lnf-form-label">Location :</label>
             <input
               id="location"
+              className="lnf-form-input"
               value={newFoundItem.location}
               onChange={(e) => setNewFoundItem({ ...newFoundItem, location: e.target.value })}
             />
           </div>
-          <button onClick={handleAddFoundItem}>Upload Item</button>
+          <button className="lnf-form-submit" onClick={handleAddFoundItem}>UPLOAD ITEM</button>
         </div>
       </section>
       <FoundItemsList/>

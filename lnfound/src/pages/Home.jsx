@@ -28,18 +28,18 @@ const Home = () => {
 
   return (
     <div>
-      <section>
-        <h2>Lost & Found System</h2>
+      <header>
+        <h1>Lost & Found System</h1>
         <p>Report lost items and view found items.</p>
-      </section>
+      </header>
       <section>
         <h2>Raise a Lost Item Ticket</h2>
         <TicketForm onAddTicket={handleAddTicket} />
       </section>
-      <AdminControl />
+      
       <LinkButton linkto="/lost-items-requests" value="View Lost Items Tickets"/>
       <FoundItemsList/>
-      
+      <AdminControl />
     </div>
   );
 };
