@@ -66,9 +66,6 @@ const Sidebar = ({ isOpen, onClose }) => {
           </ul>
         </nav>
 
-        <div className="sidebar-footer">
-          <div className="avatar-footer">N</div>
-        </div>
       </aside>
     </>
   );

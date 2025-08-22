@@ -20,10 +20,10 @@ const App = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="app-container">
+    <div className="lnf-app-layout">
       <Sidebar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-      <div className="main-content">
+      <div className="lnf-main-content">
         <button 
           className="sidebar-toggle-btn" 
           onClick={() => setSidebarOpen(true)}

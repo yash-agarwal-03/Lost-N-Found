@@ -10,25 +10,27 @@ const TicketForm = ({ onAddTicket }) => {
   };
 
   return (
-    <form className="lnf-form-section" onSubmit={handleSubmit}>
-      <span><label htmlFor="description" className="lnf-form-label">Item Description :</label>
-      <input
-        id="description"
-        className="lnf-form-input"
-        value={newTicket.description}
-        onChange={(e) => setNewTicket({ ...newTicket, description: e.target.value })}
-        required
-      />
-      <label htmlFor="location" className="lnf-form-label">Last Location :</label>
-      <input
-        id="location"
-        className="lnf-form-input"
-        value={newTicket.location}
-        onChange={(e) => setNewTicket({ ...newTicket, location: e.target.value })}
-        required
-      /></span>
-      <button className="lnf-form-submit" type="submit">SUBMIT</button>
-    </form>
+    <div className="lnf-form-section">
+      <div>
+        <label className="lnf-form-label" htmlFor="description">ITEM DESCRIPTION</label>
+        <textarea
+          id="description"
+          className='lnf-form-input '
+          value={newTicket.description}
+          onChange={(e) => setNewTicket({ ...newTicket, description: e.target.value })}
+        />
+      </div>
+      <div>
+        <label className="lnf-form-label" htmlFor="location">LAST LOCATION</label>
+        <input
+          id="location"
+          className='lnf-form-input '
+          value={newTicket.location}
+          onChange={(e) => setNewTicket({ ...newTicket, location: e.target.value })}
+        />
+      </div>
+      <button className='lnf-form-submit 'onClick={handleSubmit}>Submit Ticket</button>
+    </div>
   );
 };
 

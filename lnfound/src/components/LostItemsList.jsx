@@ -3,8 +3,6 @@ import Card from "../components/Card";
 import { useState } from "react";
 import ConfirmActionDialog from "./ConfirmActionDialog";
 import { deleteLostTicket } from "../api/Api";
-import '../styles/lists.css';
-
 const LostItemsList = ({ lostItems, onUpdate }) => {
   const [isConfirmDialogOpen, setConfirmDialogBoxOpen] = useState(false);
   const [confirmAction, setConfirmAction] = useState(null);
@@ -51,32 +49,30 @@ const LostItemsList = ({ lostItems, onUpdate }) => {
 
   return (
     <section>
-      <div className="lnf-list-container">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {lostItems.map((item) => (
-          <div className="lnf-list-card" key={item._id}>
-            <div className="lnf-list-title">Ticket #{item._id}</div>
-            <div>
-              <div className="lnf-list-label">Description</div>
-              <div className="lnf-list-value">{item.description}</div>
-            </div>
-            <div>
-              <div className="lnf-list-label">Location</div>
-              <div className="lnf-list-value">{item.location}</div>
-            </div>
-            <div className={`lnf-list-status ${item.status}`}>{item.status}</div>
+          <Card className="p-4 bg-white rounded-lg shadow-md">
+            <h3 className="text-xl font-bold mb-2">Ticket #{item._id}</h3>
+            <p className="text-gray-700 mb-2">
+              Description: {item.description}
+            </p>
+            <p className="text-gray-700 mb-2">Location: {item.location}</p>
+            <p className="text-gray-700 mb-2">Status: {item.status}</p>
 
             {item.status === "pending" && (
-              <div className="lnf-list-actions">
-                <button className="lnf-list-button edit" onClick={() => handleEditTicket(item._id)}>Edit</button>
-                <button className="lnf-list-button approve" onClick={() => handleConfirmAction("approve", item._id)}>
+              <>
+                <button onClick={() => handleEditTicket(item._id)}>Edit</button>
+                <button
+                  onClick={() => handleConfirmAction("approve", item._id)}
+                >
                   Approve
                 </button>
-                <button className="lnf-list-button delete" onClick={() => handleConfirmAction("delete", item._id)}>
+                <button onClick={() => handleConfirmAction("delete", item._id)}>
                   Delete
                 </button>
-              </div>
+              </>
             )}
-          </div>
+          </Card>
         ))}
       </div>
       <ConfirmActionDialog
