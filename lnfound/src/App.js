@@ -5,17 +5,16 @@ import FoundItems from './pages/FoundItems';
 import PendingTickets from './pages/PendingTickets';
 import LostItemsRequests from './pages/LostItemsRequests';
 import UploadFoundItem from './pages/UploadFoundItem';
+import tietLogo from './tietlogo.png';
 
 const App = () => {
+  // Import the logo image
+
   return (
     <div className="App">
       <header>
-        <a href="#">
-          <svg className="h-6 w-6 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12 12 0 010 6.844z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l-9-5-9 5 9-5 9 5zm0-13a14 14 0 110 28 14 14 0 010-28zm0 24v-10" />
-          </svg>
+        <a href="/">
+          <img className="logo" src={tietLogo} alt="TIET Logo" />
           <span className="sr-only">Lost & Found</span>
         </a>
       </header>
