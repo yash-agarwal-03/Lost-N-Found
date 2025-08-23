@@ -3,6 +3,7 @@ import Card from "../components/Card";
 import { useState } from "react";
 import ConfirmActionDialog from "./ConfirmActionDialog";
 import { deleteLostTicket } from "../api/Api";
+import "../index.css";
 const LostItemsList = ({ lostItems, onUpdate }) => {
   const [isConfirmDialogOpen, setConfirmDialogBoxOpen] = useState(false);
   const [confirmAction, setConfirmAction] = useState(null);
@@ -48,16 +49,24 @@ const LostItemsList = ({ lostItems, onUpdate }) => {
   const handleEditTicket = (id) => {};
 
   return (
-    <section>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <>
+      <>
+        <div className="lnf-inventory-grid">
         {lostItems.map((item) => (
-          <Card className="p-4 bg-white rounded-lg shadow-md">
-            <h3 className="text-xl font-bold mb-2">Ticket #{item._id}</h3>
-            <p className="text-gray-700 mb-2">
-              Description: {item.description}
+          <div className="lnf-inventory-card">
+            <h3 className="lnf-inventory-card-id">Ticket #{item._id}</h3>
+            <p className="lnf-inventory-card-label">
+              Description:
             </p>
-            <p className="text-gray-700 mb-2">Location: {item.location}</p>
-            <p className="text-gray-700 mb-2">Status: {item.status}</p>
+            <div className="lnf-inventory-card-value">{item.description}</div>
+            <p className="lnf-inventory-card-label">
+              Location:
+            </p>
+            <div className="lnf-inventory-card-value">{item.location}</div> 
+            <p className="lnf-inventory-card-label">
+              Status:
+            </p>
+            <div className="lnf-inventory-card-value">{item.status}</div> 
 
             {item.status === "pending" && (
               <>
@@ -72,9 +81,10 @@ const LostItemsList = ({ lostItems, onUpdate }) => {
                 </button>
               </>
             )}
-          </Card>
+          </div>
         ))}
       </div>
+      </>
       <ConfirmActionDialog
         isOpen={isConfirmDialogOpen}
         onClose={() => {
@@ -85,7 +95,7 @@ const LostItemsList = ({ lostItems, onUpdate }) => {
         action={confirmAction}
         onConfirm={updateTicket}
       />
-    </section>
+    </>
   );
 };
 export default LostItemsList;

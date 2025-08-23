@@ -8,7 +8,7 @@ import {
 import tiLogo from './tietlogo.png'; // Make sure you have a logo image here
 
 // --- IMPORTANT: Update this with your actual app routes ---
-const url="http://localhost:3000";
+const url="http://tietnexus.vercel.app";
 const navigation = [
   { name: "Welcome", href: `${url}/`, icon: FaHome },
   { name: "Explore", href: `${url}/explore`, icon: FaCompass },

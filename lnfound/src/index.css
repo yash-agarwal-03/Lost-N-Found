@@ -1,3 +1,7 @@
+body{
+  overflow-x: hidden;
+}
+
 /* CARD CONTAINER */
 .lnf-inventory-container {
   width: 100%;

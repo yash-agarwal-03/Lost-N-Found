@@ -54,21 +54,21 @@ const LostItemsRequests = () => {
   });
   return (
     <div>
-      <section>
+      <>
         <div className="flex justify-center mt-4">
           <LinkButton linkto="/" value="Home Page" />
           <LinkButton linkto="/pending-tickets" value="View Pending Tickets" />
         </div>
-      </section>
-      <section>
-        <h2>Lost Items Tickets</h2>
+      </>
+      <>
+        <h2 className="lnf-inventory-heading">Lost Items Tickets</h2>
         {showPending > 0 ? (
           <p>{showPending} Pending tickets available to approve</p>
         ) : (
           <p>No pending tickets</p>
         )}
         <LostItemsList lostItems={tickets} onUpdate={updateTicketStatus} />
-      </section>
+      </>
     </div>
   );
 };

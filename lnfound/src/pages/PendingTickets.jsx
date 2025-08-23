@@ -90,14 +90,14 @@ const PendingTickets = () => {
   };
   return <section>
     <h2>Pending Requests</h2>
-    <section>
+    <>
              <div className="flex justify-center mt-4">
 
              <LinkButton linkto="/" value="Home Page"/>
              <LinkButton linkto="/lost-items-requests" value="View Lost Items Tickets"/>
            
              </div>
-         </section>
+         </>
     <LostItemslist lostItems={tickets.filter(ticket=>ticket.status==='pending')} onUpdate={updateTicketStatus}/>
     </section>
 }
